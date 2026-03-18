@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Reviews Management - Fashion Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* --- CSS GỐC CỦA NHÓM --- */
+        *{ margin:0; padding:0; box-sizing:border-box; font-family:Arial; }
+        body{ background:#f4f6f9; }
+        .container{ display:flex; min-height:100vh; }
+        .sidebar{ width:240px; background:#1e1e2f; color:white; padding:20px; display:flex; flex-direction:column; justify-content:space-between; }
+        .sidebar h2{ text-align:center; margin-bottom:30px; }
+        .sidebar ul{ list-style:none; }
+        .sidebar li{ margin:18px 0; }
+        .sidebar a{ color:white; text-decoration:none; font-size:16px; display:flex; align-items:center; gap:10px; padding:8px; border-radius:6px; transition:0.3s; cursor:pointer;}
+        .sidebar a:hover, .sidebar a.active { background:#2c3e50; color:#ff9800; }
+        .logout{ padding-top:20px; border-top:1px solid rgba(255,255,255,0.2); }
+        .logout button{ width:100%; padding:12px; background:linear-gradient(135deg,#ff4b2b,#ff416c); color:white; border:none; border-radius:8px; font-size:15px; font-weight:bold; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:0.3s; }
+        .logout button:hover{ transform:translateY(-2px); box-shadow:0 6px 12px rgba(0,0,0,0.2); }
+        .main{ flex:1; padding:30px; }
+        
+        /* Bảng */
+        .table-container{ background:white; padding:20px; border-radius:10px; box-shadow:0 3px 8px rgba(0,0,0,0.1); margin-bottom: 20px;}
+        table{ width:100%; border-collapse:collapse; }
+        th,td{ padding:12px; text-align:center; border-bottom:1px solid #ddd; }
+        th{ background:#2c3e50; color:white; }
+        
+        /* Nút cơ bản */
+        .btn { border:none; padding:6px 10px; border-radius:4px; cursor:pointer; color:white; margin:0 2px; }
+        .approve-btn { background:#2196f3; } .approve-btn:hover { background:#1976d2; }
+        .delete-btn { background:#e74c3c; } .delete-btn:hover { background:#c0392b; }
+        .reply-btn { background:#f39c12; } .reply-btn:hover { background:#d68910; }
+        
+        /* Badges */
+        .badge { padding: 4px 8px; border-radius: 4px; font-size: 13px; font-weight: bold; color: white; display: inline-block;}
+        .bg-success { background: #27ae60; }
+        .bg-danger { background: #e74c3c; }
+        .stars { color: #ff9800; }
+
+        /* --- CSS MỚI CHO FILTER & MODAL --- */
+        .header-action { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .header-action h1 { margin-bottom: 0; }
+        .filter-box { padding: 8px 15px; border: 1px solid #ccc; border-radius: 6px; outline: none; cursor: pointer; background: white; width: 200px;}
+
+        .modal { 
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; 
+            background-color: rgba(0,0,0,0.5); align-items: center; justify-content: center; 
+        }
+        .modal-content { 
+            background-color: #fff; padding: 25px; border-radius: 10px; 
+            width: 500px; max-width: 90%; position: relative;
+            animation: slideDown 0.3s ease-out;
+        }
+        @keyframes slideDown { from {transform: translateY(-30px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+        
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #7f8c8d; }
+        .close-btn:hover { color: #e74c3c; }
+        .modal-header { margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        
+        .review-quote { background: #f4f6f9; border-left: 4px solid #2196f3; padding: 10px 15px; margin-bottom: 20px; font-style: italic; color: #555; }
+        .reply-textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; height: 100px; resize: none; outline: none; font-family: Arial; margin-bottom: 15px;}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="sidebar">
+        <div>
+            <h2>Fashion Admin</h2>
+            <ul>
+                <li><a href="dashboard.html"><i class="fa fa-chart-line"></i> Dashboard </a> </li> 
+                <li><a href="admin.html"><i class="fa fa-shirt"></i> Products </a></li>
+                <li><a href="orders.html"><i class="fa fa-cart-shopping"></i> Orders </a></li>
+                <li><a href="reviews.html" class="active"><i class="fa fa-star"></i> Reviews </a></li>
+                <li><a href="#"><i class="fa fa-envelope"></i> Feedback </a> </li>
+            </ul>
+        </div>
+        <div class="logout">
+            <button onclick="logout()"> <i class="fa fa-right-from-bracket"></i> Đăng xuất </button>
+        </div>
+    </div>
+
+    <div class="main">
+        
+        <div class="header-action">
+            <h1>Quản lý Đánh giá</h1>
+            <div class="search-filter">
+                <select id="starFilter" class="filter-box" onchange="filterReviews()">
+                    <option value="all">Tất cả số sao</option>
+                    <option value="5">5 Sao (Tuyệt vời)</option>
+                    <option value="4">4 Sao (Tốt)</option>
+                    <option value="3">3 Sao (Bình thường)</option>
+                    <option value="2">2 Sao (Kém)</option>
+                    <option value="1">1 Sao (Tệ)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Sản phẩm</th>
+                    <th>Người dùng</th>
+                    <th>Đánh giá</th>
+                    <th style="width: 30%;">Bình luận</th>
+                    <th>Trạng thái</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Men T-Shirt</td>
+                    <td>user_123</td>
+                    <td class="stars" data-star="5">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                    </td>
+                    <td>Áo đẹp, vải mát, giao hàng nhanh!</td>
+                    <td><span class="badge bg-success">Đã duyệt</span></td>
+                    <td>
+                        <button class="btn reply-btn" onclick="openReplyModal('user_123', 'Áo đẹp, vải mát, giao hàng nhanh!')"><i class="fa fa-reply"></i> Phản hồi</button>
+                        <button class="btn delete-btn"><i class="fa fa-eye-slash"></i> Ẩn</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Women Dress</td>
+                    <td>anna_nguyen</td>
+                    <td class="stars" data-star="2">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+                    </td>
+                    <td>Form váy hơi nhỏ so với size thật, giao chậm.</td>
+                    <td><span class="badge bg-danger">Đã ẩn</span></td>
+                    <td>
+                        <button class="btn approve-btn"><i class="fa fa-check"></i> Duyệt</button>
+                        <button class="btn reply-btn" onclick="openReplyModal('anna_nguyen', 'Form váy hơi nhỏ so với size thật, giao chậm.')"><i class="fa fa-reply"></i> Phản hồi</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="replyModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeReplyModal()">&times;</span>
+        
+        <div class="modal-header">
+            <h2>Phản hồi khách hàng <span id="modal-customer-name" style="color: #2196f3;"></span></h2>
+        </div>
+
+        <div class="review-quote">
+            "<span id="modal-review-text"></span>"
+        </div>
+
+        <textarea class="reply-textarea" placeholder="Nhập nội dung phản hồi của shop tại đây..."></textarea>
+        
+        <div style="text-align: right;">
+            <button class="btn" style="background: #95a5a6; color: white;" onclick="closeReplyModal()">Hủy</button>
+            <button class="btn approve-btn" onclick="submitReply()"><i class="fa fa-paper-plane"></i> Gửi phản hồi</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function logout(){
+        if(confirm("Bạn có chắc muốn đăng xuất không?")){
+            window.location.href="login.html";
+        }
+    }
+
+    // Modal Trả lời Review
+    var modal = document.getElementById("replyModal");
+
+    function openReplyModal(customerName, reviewText) {
+        modal.style.display = "flex";
+        document.getElementById("modal-customer-name").innerText = customerName;
+        document.getElementById("modal-review-text").innerText = reviewText;
+    }
+
+    function closeReplyModal() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    function submitReply() {
+        alert("Đã gửi phản hồi thành công! (Dữ liệu này sẽ được lưu qua API sau)");
+        closeReplyModal();
+    }
+
+    // Lọc Review theo số sao (Hoạt động trực tiếp trên giao diện)
+    function filterReviews() {
+        let selectedStar = document.getElementById("starFilter").value;
+        let table = document.querySelector(".table-container table");
+        let rows = table.getElementsByTagName("tr");
+
+        for (let i = 1; i < rows.length; i++) {
+            let row = rows[i];
+            let starCell = row.querySelector(".stars");
+            
+            if (starCell) {
+                // Lấy số sao từ thuộc tính data-star mà mình đã gài sẵn trong HTML
+                let starValue = starCell.getAttribute("data-star");
+                
+                if (selectedStar === "all" || selectedStar === starValue) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

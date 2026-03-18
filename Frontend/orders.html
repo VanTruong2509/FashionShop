@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders Management - Fashion Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* --- CSS GỐC CỦA NHÓM --- */
+        *{ margin:0; padding:0; box-sizing:border-box; font-family:Arial; }
+        body{ background:#f4f6f9; }
+        .container{ display:flex; min-height:100vh; }
+        .sidebar{ width:240px; background:#1e1e2f; color:white; padding:20px; display:flex; flex-direction:column; justify-content:space-between; }
+        .sidebar h2{ text-align:center; margin-bottom:30px; }
+        .sidebar ul{ list-style:none; }
+        .sidebar li{ margin:18px 0; }
+        .sidebar a{ color:white; text-decoration:none; font-size:16px; display:flex; align-items:center; gap:10px; padding:8px; border-radius:6px; transition:0.3s; cursor:pointer;}
+        .sidebar a:hover, .sidebar a.active { background:#2c3e50; color:#ff9800; }
+        .logout{ padding-top:20px; border-top:1px solid rgba(255,255,255,0.2); }
+        .logout button{ width:100%; padding:12px; background:linear-gradient(135deg,#ff4b2b,#ff416c); color:white; border:none; border-radius:8px; font-size:15px; font-weight:bold; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:0.3s; }
+        .logout button:hover{ transform:translateY(-2px); box-shadow:0 6px 12px rgba(0,0,0,0.2); }
+        .main{ flex:1; padding:30px; }
+        
+        /* Bảng */
+        .table-container{ background:white; padding:20px; border-radius:10px; box-shadow:0 3px 8px rgba(0,0,0,0.1); margin-bottom: 20px;}
+        table{ width:100%; border-collapse:collapse; }
+        th,td{ padding:12px; text-align:center; border-bottom:1px solid #ddd; }
+        th{ background:#2c3e50; color:white; }
+        
+        /* Nút cơ bản */
+        .btn { border:none; padding:6px 10px; border-radius:4px; cursor:pointer; color:white; margin:0 2px; }
+        .view-btn { background:#27ae60; } .view-btn:hover { background:#1e8449; }
+        .edit-btn { background:#2196f3; } .edit-btn:hover { background:#1976d2; }
+        
+        /* Badges */
+        .badge { padding: 4px 8px; border-radius: 4px; font-size: 13px; font-weight: bold; color: white; display: inline-block;}
+        .bg-pending { background: #f39c12; }
+        .bg-success { background: #27ae60; }
+        .bg-danger { background: #e74c3c; }
+
+        /* --- CSS MỚI CHO TÌM KIẾM & FILTER --- */
+        .header-action { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .header-action h1 { margin-bottom: 0; }
+        .search-filter { display: flex; gap: 10px; }
+        .search-box { padding: 8px 15px; border: 1px solid #ccc; border-radius: 6px; width: 250px; outline: none; }
+        .filter-box { padding: 8px; border: 1px solid #ccc; border-radius: 6px; outline: none; cursor: pointer; background: white;}
+
+        /* --- CSS MỚI CHO POPUP (MODAL) --- */
+        .modal { 
+            display: none; /* Mặc định ẩn */
+            position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; 
+            background-color: rgba(0,0,0,0.5); /* Lớp phủ đen mờ */
+            align-items: center; justify-content: center; 
+        }
+        .modal-content { 
+            background-color: #fff; padding: 25px; border-radius: 10px; 
+            width: 600px; max-width: 90%; position: relative;
+            animation: slideDown 0.3s ease-out; /* Hiệu ứng trượt xuống nhẹ nhàng */
+        }
+        @keyframes slideDown { from {transform: translateY(-30px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+        
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #7f8c8d; }
+        .close-btn:hover { color: #e74c3c; }
+        .modal-header { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        
+        .order-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; font-size: 14px; line-height: 1.6;}
+        .order-info-grid p strong { color: #2c3e50; }
+        
+        .modal-table th { background: #f4f6f9; color: #2c3e50; border-bottom: 2px solid #ddd;}
+        .modal-table td { text-align: left; }
+        .modal-table td.text-right, .modal-table th.text-right { text-align: right; }
+        .total-row { font-size: 18px; font-weight: bold; color: #e74c3c; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="sidebar">
+        <div>
+            <h2>Fashion Admin</h2>
+            <ul>
+                <li><a href="dashboard.html"><i class="fa fa-chart-line"></i> Dashboard </a> </li> 
+                <li><a href="admin.html"><i class="fa fa-shirt"></i> Products </a></li>
+                <li><a href="orders.html" class="active"><i class="fa fa-cart-shopping"></i> Orders </a></li>
+                <li><a href="reviews.html"><i class="fa fa-star"></i> Reviews </a></li>
+                <li><a href="#"><i class="fa fa-envelope"></i> Feedback </a> </li>
+            </ul>
+        </div>
+        <div class="logout">
+            <button onclick="logout()"> <i class="fa fa-right-from-bracket"></i> Đăng xuất </button>
+        </div>
+    </div>
+
+    <div class="main">
+        
+        <div class="header-action">
+            <h1>Quản lý Đơn hàng</h1>
+            <div class="search-filter">
+                <input type="text" class="search-box" placeholder="Tìm mã đơn, tên khách hàng..." onkeyup="searchOrder()">
+                <select id="statusFilter" class="filter-box" onchange="filterOrders()">
+    				<option value="all">Tất cả trạng thái</option>
+    				<option value="pending">Chờ xử lý</option>
+    				<option value="delivering">Đang giao</option>
+    				<option value="success">Đã giao</option>
+    				<option value="canceled">Đã hủy</option>
+				</select>
+                <button class="btn view-btn"><i class="fa fa-search"></i> Tìm</button>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Mã ĐH</th>
+                    <th>Khách hàng</th>
+                    <th>Ngày đặt</th>
+                    <th>Tổng tiền</th>
+                    <th>Trạng thái</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td>#ORD-001</td>
+                    <td>Nguyễn Văn A</td>
+                    <td>14/03/2026</td>
+                    <td>550.000đ</td>
+                    <td><span class="badge bg-pending">Chờ xử lý</span></td>
+                    <td>
+                        <button class="btn view-btn" onclick="openModal('ORD-001')"><i class="fa fa-eye"></i> View</button>
+                        <button class="btn edit-btn"><i class="fa fa-pen"></i> Update</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#ORD-002</td>
+                    <td>Trần Thị B</td>
+                    <td>13/03/2026</td>
+                    <td>1.200.000đ</td>
+                    <td><span class="badge bg-success">Đã giao</span></td>
+                    <td>
+                        <button class="btn view-btn" onclick="openModal('ORD-002')"><i class="fa fa-eye"></i> View</button>
+                        <button class="btn edit-btn"><i class="fa fa-pen"></i> Update</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="orderModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        
+        <div class="modal-header">
+            <h2 id="modal-order-id">Chi tiết Đơn hàng #ORD-001</h2>
+        </div>
+
+        <div class="order-info-grid">
+            <div>
+                <p><strong>Khách hàng:</strong> Nguyễn Văn A</p>
+                <p><strong>Điện thoại:</strong> 0901234567</p>
+                <p><strong>Ngày đặt:</strong> 14/03/2026 - 14:30</p>
+            </div>
+            <div>
+                <p><strong>Địa chỉ:</strong> 123 Đường Cầu Giấy, Q. Cầu Giấy, Hà Nội</p>
+                <p><strong>Thanh toán:</strong> COD (Thanh toán khi nhận hàng)</p>
+                <p><strong>Trạng thái:</strong> <span class="badge bg-pending">Chờ xử lý</span></p>
+            </div>
+        </div>
+
+        <table class="modal-table">
+            <tr>
+                <th>Sản phẩm</th>
+                <th>Đơn giá</th>
+                <th>SL</th>
+                <th class="text-right">Thành tiền</th>
+            </tr>
+            <tr>
+                <td>Áo thun nam Basic (Size L)</td>
+                <td>200.000đ</td>
+                <td>1</td>
+                <td class="text-right">200.000đ</td>
+            </tr>
+            <tr>
+                <td>Váy hoa cúc nữ (Size M)</td>
+                <td>350.000đ</td>
+                <td>1</td>
+                <td class="text-right">350.000đ</td>
+            </tr>
+            <tr>
+                <td colspan="3" class="text-right" style="padding-top: 15px;">Phí giao hàng:</td>
+                <td class="text-right" style="padding-top: 15px;">30.000đ</td>
+            </tr>
+            <tr>
+                <td colspan="3" class="text-right total-row">Tổng thanh toán:</td>
+                <td class="text-right total-row">580.000đ</td>
+            </tr>
+        </table>
+        
+        <div style="text-align: right; margin-top: 20px;">
+            <button class="btn" style="background: #95a5a6; color: white;" onclick="closeModal()">Đóng</button>
+            <button class="btn view-btn"><i class="fa fa-print"></i> In hóa đơn</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Hàm Đăng xuất
+    function logout(){
+        if(confirm("Bạn có chắc muốn đăng xuất không?")){
+            window.location.href="login.html";
+        }
+    }
+
+    // Các biến cho Modal
+    var modal = document.getElementById("orderModal");
+
+    // Mở Modal
+    function openModal(orderId) {
+        modal.style.display = "flex";
+        // Sau này có API, bạn sẽ dùng fetch() gọi backend lấy chi tiết orderId 
+        // rồi đổ dữ liệu vào HTML của modal. Tạm thời đổi tên tiêu đề cho sinh động.
+        document.getElementById("modal-order-id").innerText = "Chi tiết Đơn hàng #" + orderId;
+    }
+
+    // Đóng Modal
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    // Đóng Modal khi click ra ngoài vùng trắng
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // Giả lập hàm tìm kiếm
+    // Hàm mô phỏng tìm kiếm trực tiếp trên giao diện (Frontend)
+	function searchOrder() {
+		// 1. Lấy từ khóa người dùng nhập vào ô tìm kiếm và chuyển thành chữ thường
+		let input = document.querySelector(".search-box").value.toLowerCase();
+
+		// 2. Lấy danh sách các dòng trong bảng
+		let table = document.querySelector(".table-container table");
+		let rows = table.getElementsByTagName("tr");
+
+		// 3. Chạy vòng lặp qua từng dòng (bắt đầu từ dòng 1 để bỏ qua tiêu đề bảng)
+		for (let i = 1; i < rows.length; i++) {
+			let row = rows[i];
+
+			// Lấy cột Mã đơn hàng (cột thứ 1, index 0) và cột Tên khách (cột thứ 2, index 1)
+			let orderIdCell = row.getElementsByTagName("td")[0];
+			let customerNameCell = row.getElementsByTagName("td")[1];
+
+			if (orderIdCell && customerNameCell) {
+				// Lấy text bên trong cột và chuyển thành chữ thường
+				let orderIdText = orderIdCell.textContent || orderIdCell.innerText;
+				let customerNameText = customerNameCell.textContent || customerNameCell.innerText;
+
+				// Kiểm tra xem từ khóa tìm kiếm có nằm trong Mã đơn hoặc Tên khách không
+				if (orderIdText.toLowerCase().indexOf(input) > -1 || customerNameText.toLowerCase().indexOf(input) > -1) {
+					row.style.display = ""; // Có chứa từ khóa -> Hiển thị
+				} else {
+					row.style.display = "none"; // Không chứa -> Ẩn đi
+				}
+			}
+		}
+	}
+	
+	// Hàm lọc đơn hàng trực tiếp bằng JavaScript (Frontend)
+	function filterOrders() {
+		// 1. Lấy giá trị đang được chọn trong ô select
+		let selectedStatus = document.getElementById("statusFilter").value;
+
+		// 2. Lấy tất cả các dòng (tr) trong bảng (bỏ qua dòng tiêu đề)
+		let table = document.querySelector(".table-container table");
+		let rows = table.getElementsByTagName("tr");
+
+		// 3. Duyệt qua từng dòng để kiểm tra
+		for (let i = 1; i < rows.length; i++) {
+			let row = rows[i];
+			let statusBadge = row.querySelector(".badge"); // Tìm thẻ nhãn trạng thái trong dòng đó
+
+			if (statusBadge) {
+				// Xác định class của nhãn để biết trạng thái của đơn hàng này là gì
+				let isPending = statusBadge.classList.contains("bg-pending");
+				let isSuccess = statusBadge.classList.contains("bg-success");
+				let isDanger = statusBadge.classList.contains("bg-danger"); // Giả sử dùng cho Đã hủy
+
+				// Logic kiểm tra xem dòng này có được hiển thị không
+				let showRow = false;
+
+				if (selectedStatus === "all") {
+					showRow = true; // Chọn "Tất cả" thì hiện hết
+				} else if (selectedStatus === "pending" && isPending) {
+					showRow = true;
+				} else if (selectedStatus === "success" && isSuccess) {
+					showRow = true;
+				}
+				// Thêm các điều kiện khác nếu bạn có class màu cho "Đang giao" và "Đã hủy"
+
+				// 4. Áp dụng ẩn/hiện
+				if (showRow) {
+					row.style.display = ""; // Hiển thị
+				} else {
+					row.style.display = "none"; // Ẩn đi
+				}
+			}
+		}
+	}
+</script>
+</body>
+</html>
