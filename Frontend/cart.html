@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Giỏ Hàng</title>
+    <style>
+        body {
+    font-family: Arial;
+    background: #EBFBFF;
+    padding: 20px;
+}
+
+header {
+    background: #5F8FAF;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #001657;
+}
+
+/* Container */
+.cart-container {
+    margin-top: 20px;
+}
+
+/* Item */
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.cart-item:hover {
+    transform: scale(1.02);
+}
+
+/* Image */
+.cart-item img {
+    width: 80px;
+    border-radius: 10px;
+}
+
+/* Info */
+.item-info {
+    flex: 2;
+    margin-left: 15px;
+}
+
+.item-info h3 {
+    color: #001657;
+}
+
+/* Price */
+.price {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Quantity */
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Buttons */
+button {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* + - buttons */
+.btn-qty {
+    background: #5F8FAF;
+    color: white;
+}
+
+.btn-qty:hover {
+    background: #001657;
+    transform: scale(1.1);
+}
+
+/* Delete */
+.btn-delete {
+    background: #C05F5F;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: red;
+    transform: scale(1.1);
+}
+
+/* Summary */
+.summary {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.summary h3 {
+    color: #001657;
+}
+
+/* Checkout button */
+.summary button {
+    background: #d8eb07;
+}
+
+.summary button:hover {
+    transform: scale(1.1);
+    background: #c5d800;
+}
+    </style>
+</head>
+<body>
+
+<header>
+    <h2>FASHIONSTORE - Giỏ Hàng</h2>
+</header>
+
+<h1>🛒 Giỏ Hàng Của Bạn</h1>
+
+<div class="cart-container" id="cart-container"></div>
+
+<div class="summary">
+    <h3>Tổng tiền: <span id="total">0</span> VNĐ</h3>
+    <button onclick="goToCheckout()" >Thanh Toán</button>
+</div>
+
+<script>
+    let cart = JSON.parse(localStorage.getItem('cart'))
+
+cart = [
+    {
+        name: "Áo Khoác Bomber Nam",
+        price: 200000,
+        quantity: 1,
+        image: "/frontend/images/aokhoacbombernam.png"
+    },
+    {
+        name: "Áo Khoác Cardigan Nữ",
+        price: 150000,
+        quantity: 2,
+        image: "/frontend/images/aokhoaccardigan.png"
+    }
+];
+
+function renderCart(){
+    const container = document.getElementById("cart-container");
+    const totalEL = document.getElementById("total");
+
+    container.innerHTML ="";
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        total = total + item.price *item.quantity;
+
+        container.innerHTML += `
+           <div class="cart-item">
+            <img src="${item.image}" alt="ảnh">
+
+            <div class="item-info">
+                <h3>${item.name}</h3>
+                <p class="price">${formatPrice(item.price)}</p>
+            </div>
+
+            <div class="quantity">
+                <button class="btn-qty" onclick="changeQuantity(${index}, -1)">-</button>
+                <span>${item.quantity}</span>
+                <button class="btn-qty" onclick="changeQuantity(${index}, 1)">+</button>
+            </div>
+
+            <button class="btn-delete" onclick="removeItem(${index})">Xóa</button>
+        </div>
+        `;
+    });
+
+    totalEL.innerText = formatPrice(total);
+}
+
+function formatPrice(price){
+    return price.toLocaleString('vi-VN') + " VNĐ";
+}
+
+function changeQuantity(index, change){
+    cart[index].quantity +=change;
+    if (cart[index].quantity<=0) cart.splice(index, 1);
+    localStorage.setItem('cart',JSON.stringify(cart));
+    renderCart();
+}
+
+function removeFromCart(productID){
+    cart.splice(index,1);
+    localStorage.setItem('cart',JSON.stringify(cart));
+    renderCart();
+}
+
+function goToCheckout(){
+    window.location.href = "checkout.html";
+}
+
+renderCart();
+
+</script>
+</body>
+</html>

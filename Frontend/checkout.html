@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thanh Toán</title>
+    <link rel="stylesheet" href="/frontend/style/checkout.css">
+    <style>
+        body {
+    font-family: Arial;
+    background: #EBFBFF;
+    padding: 20px;
+}
+
+header {
+    background: #5F8FAF;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #001657;
+}
+
+form {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    width: 350px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+input, select {
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #d8eb07;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #c5d800;
+}
+
+.checkout-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.order-summary {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.order-item img {
+    width: 60px;
+    border-radius: 10px;
+}
+
+.order-info {
+    flex: 1;
+    margin-left: 10px;
+}
+
+form {
+    flex: 1;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.order-item:hover {
+    transform: scale(1.02);
+    transition: 0.3s;
+}
+    </style>
+</head>
+<body>
+
+<header>
+    <h2>FASHIONSTORE - Thanh Toán</h2>
+</header>
+
+<h1> Thanh Toán</h1>
+
+<div class="checkout-container">
+
+    <div class="order-summary">
+        <h2> Đơn hàng của bạn</h2>
+        <div id="order-items"></div>
+        <h3>Tổng: <span id="total">0</span></h3>
+    </div>
+
+    <form id="checkout-form">
+        <h2> Thông tin khách hàng</h2>
+
+        <input type="text" placeholder="Họ và tên" required>
+        <input type="text" placeholder="Địa chỉ" required>
+        <input type="text" placeholder="Số điện thoại" required>
+
+        <select>
+            <option>Thanh toán khi nhận hàng (COD)</option>
+            <option>Chuyển khoản</option>
+        </select>
+
+        <button type="submit">Đặt Hàng</button>
+    </form>
+
+</div>
+
+<script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+cart = [
+    {
+        name: "Áo Khoác Bomber Nam",
+        price: 200000,
+        quantity: 1,
+        image: "/frontend/images/aokhoacbombernam.png"
+    },
+    {
+        name: "Áo Khoác Cardigan Nữ",
+        price: 150000,
+        quantity: 2,
+        image: "/frontend/images/aokhoaccardigan.png"
+    }
+];
+
+function renderOrders(){
+    const container = document.getElementById("order-items");
+    const totalEL =document.getElementById("total");
+    container.innerHTML ="";
+    let total = 0;
+
+    cart.forEach(item=>{
+        total+= item.price * item.quantity;
+        container.innerHTML += `
+        <div class="order-item">
+            <img src="${item.image}" alt="ảnh">
+
+            <div class="order-info">
+                <h4>${item.name}</h4>
+                <p>Số lượng: ${item.quantity}</p>
+            </div>
+
+            <span>${formatPrice(item.price)}</span>
+        </div>
+        `;
+    });
+    totalEL.textContent = formatPrice(total);
+}
+function formatPrice(price){
+    return price.toLocaleString("vi-VN", {style: "currency", currency: "VND"});
+}
+
+document.getElementById("checkout-form").addEventListener("submit", function(e){
+    e.preventDefault();
+    alert("Đặt hàng thành công!");
+    localStorage.removeItem("cart");
+    window.location.href = "/Frontend/trangchu.html";
+});
+renderOrders();
+</script>
+</body>
+</html>

@@ -45,3 +45,29 @@ menu.forEach(function(link){
         link.classList.add("active");
     }
 });
+
+const buttons = document.querySelectorAll(".cart");
+
+buttons.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+        const product = btn.closest(".sp, .bcc, .kmm");
+
+        const name = product.querySelector("h3").innerText;
+        const priceText = product.querySelector(".price p").innerText;
+        const price = parseInt(priceText.replace(/\D/g, ""));
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        const existing = cart.find(item => item.name === name);
+
+        if (existing) {
+            existing.quantity++;
+        } else {
+            cart.push({ name, price, quantity: 1 });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        alert("Added to cart!");
+    });
+});
