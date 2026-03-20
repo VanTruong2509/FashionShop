@@ -501,3 +501,20 @@
         color: red;
     }
 
+.policy{
+    display:flex;
+    justify-content:space-around;
+    margin:40px 0;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+}
+
+.policy-item{
+    text-align:center;
+}
+
+.policy-item img{
+    width:60px;
+    margin-bottom:10px;
+}
