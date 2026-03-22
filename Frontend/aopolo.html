@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/products.css">
+    <link rel="icon" href="../images/trangchu.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Áo Polo Nam - FASHIONSTORE</title>
+
+</head>
+<body>
+    <header>
+        <div class="logo"><h3>FASHIONSTORE</h3></div>
+        <div class="nav">
+            <ul>
+                <li><a href="../frame/trangchu.html">Trang Chủ</a></li>
+                <li><a href="../frame/products.html">Sản Phẩm</a>
+                    <ul class="dropdown">
+                        <li><a href="aosomi.html">Áo Sơ Mi Nam/Nữ</a></li>
+                        <li><a href="aopolo.html" class="active">Áo Polo Nam</a></li>
+                        <li><a href="aokhoac.html">Áo Khoác Nam/Nữ</a></li>
+                        <li><a href="quantay.html">Quần Tây Nam/Nữ</a></li>
+                        <li><a href="quanjean.html">Quần Jean Nam/Nữ</a></li>
+                        <li><a href="quandui.html">Quần Short Nam/Nữ</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Liên Hệ</a></li>
+                <li><a href="#"><i class="r fa-solid fa-basket-shopping"></i></a></li>
+                <li><a href="#"><i class="o fa-solid fa-user"></i></a></li>
+            </ul>
+            <div class="icon">
+                <input type="text" class="search" placeholder="Tìm Kiếm"> <a href="#"><i class="s fa-solid fa-magnifying-glass"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="products-container">
+        <h1 style="text-align:center;color:#000e47;margin-bottom:30px;">Áo Polo Nam</h1>
+
+        <div class="filters">
+            <div class="search-bar"><input type="text" id="search" placeholder="Tìm kiếm áo polo theo tên..."></div>
+            <div class="filter-group"><label for="min-price">Giá từ:</label><input type="number" id="min-price" placeholder="0"></div>
+            <div class="filter-group"><label for="max-price">Đến:</label><input type="number" id="max-price" placeholder="1000000"></div>
+            <div class="filter-group"><label for="gender">Giới tính:</label><select id="gender"><option value="">Tất cả</option><option value="Nam">Nam</option></select></div>
+            <div class="filter-group sort-group"><label for="sort">Sắp xếp:</label><select id="sort"><option value="name">Tên A-Z</option><option value="price-asc">Giá tăng dần</option><option value="price-desc">Giá giảm dần</option><option value="date-desc">Mới nhất</option></select></div>
+        </div>
+
+        <div class="products-grid pd" id="products-grid">
+            <a class="sp product-card" href="#" data-name="Áo Polo Basic Nam" data-price="120000" data-gender="Nam" data-date="2024-03-20">
+                <div class="pt"><img src="/images/aopolobasicnam.png" alt="Áo Polo Basic Nam"></div>
+                <h3>Áo Polo Basic Nam</h3>
+                <div class="price"><p>120.000 VNĐ</p><del>150.000 VNĐ</del></div>
+                <div class="star"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <div class="hd"><button class="cart">Thêm Giỏ Hàng</button><button class="buy">Mua Ngay</button></div>
+            </a>
+            <a class="sp product-card" href="#" data-name="Áo Polo Slim Fit Nam" data-price="110000" data-gender="Nam" data-date="2024-03-19">
+                <div class="pt"><img src="/images/aopoloslimfitnam.png" alt="Áo Polo Slim Fit Nam"></div>
+                <h3>Áo Polo Slim Fit Nam</h3>
+                <div class="price"><p>110.000 VNĐ</p><del>140.000 VNĐ</del></div>
+                <div class="star"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <div class="hd"><button class="cart">Thêm Giỏ Hàng</button><button class="buy">Mua Ngay</button></div>
+            </a>
+            <a class="sp product-card" href="#" data-name="Áo Polo Tay Lỡ Nam" data-price="115000"  data-gender="Nam" data-date="2024-03-18">
+                <div class="pt"><img src="/images/aopolotaylonam.png" alt="Áo Polo Tay Lỡ Nam"></div>
+                <h3>Áo Polo Tay Lỡ Nam</h3>
+                <div class="price"><p>115.000 VNĐ</p><del>138.000 VNĐ</del></div>
+                <div class="star"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <div class="hd"><button class="cart">Thêm Giỏ Hàng</button><button class="buy">Mua Ngay</button></div>
+            </a>
+            <a class="sp product-card" href="#" data-name="Áo Polo Unisex" data-price="220000" data-gender="Nam" data-date="2024-03-17">
+                <div class="pt"><img src="/images/aopolounisex.png" alt="Áo Polo Unisex"></div>
+                <h3>Áo Polo Unisex</h3>
+                <div class="price"><p>220.000 VNĐ</p><del>260.000 VNĐ</del></div>
+                <div class="star"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <div class="hd"><button class="cart">Thêm Giỏ Hàng</button><button class="buy">Mua Ngay</button></div>
+            </a>
+            <a class="sp product-card" href="#" data-name="Áo Polo Oversize " data-price="100000" data-gender="Nam" data-date="2024-03-16">
+                <div class="pt"><img src="/images/aopolooversize.png" alt="Áo Polo Oversize "></div>
+                <h3>Áo Polo Oversize </h3>
+                <div class="price"><p>100.000 VNĐ</p><del>130.000 VNĐ</del></div>
+                <div class="star"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <div class="hd"><button class="cart">Thêm Giỏ Hàng</button><button class="buy">Mua Ngay</button></div>
+            </a>
+            <a class="sp product-card" href="#" data-name="Áo Polo Kẻ Sọc Nam" data-price="210000" data-gender="Nam" data-date="2024-03-15">
+                <div class="pt"><img src="/images/aopolokesocnam.png" alt="Áo Polo Kẻ Sọc Nam"></div>
+                <h3>Áo Polo Kẻ Sọc Nam</h3>
+                <div class="price"><p>210.000 VNĐ</p><del>250.000 VNĐ</del></div>
+                <div class="star"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <div class="hd"><button class="cart">Thêm Giỏ Hàng</button><button class="buy">Mua Ngay</button></div>
+            </a>
+            <a class="sp product-card" href="#" data-name="Áo Polo Cổ V" data-price="230000" data-gender="Nam" data-date="2024-03-14">
+                <div class="pt"><img src="/images/aopolocoV.png" alt="Áo Polo Cổ V"></div>
+                <h3>Áo Polo Cổ V</h3>
+                <div class="price"><p>230.000 VNĐ</p><del>280.000 VNĐ</del></div>
+                <div class="star"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <div class="hd"><button class="cart">Thêm Giỏ Hàng</button><button class="buy">Mua Ngay</button></div>
+            </a>
+            <a class="sp product-card" href="#" data-name="Áo Polo Nam Thun" data-price="125000" data-gender="Nam" data-date="2024-03-13">
+                <div class="pt"><img src="/images/aopolonamthun.png" alt="Áo Polo Nam Thun"></div>
+                <h3>Áo Polo Nam Thun</h3>
+                <div class="price"><p>125.000 VNĐ</p><del>150.000 VNĐ</del></div>
+                <div class="star"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <div class="hd"><button class="cart">Thêm Giỏ Hàng</button><button class="buy">Mua Ngay</button></div>
+            </a>
+            <a class="sp product-card" href="#" data-name="Áo Polo Color Block" data-price="260000" data-brand="BVLGARI" data-gender="Nam" data-date="2024-03-12">
+                <div class="pt"><img src="/images/aopolocolorblock.png" alt="Áo Polo Color Block"></div>
+                <h3>Áo Polo Color Block</h3>
+                <div class="price"><p>260.000 VNĐ</p><del>300.000 VNĐ</del></div>
+                <div class="star"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <div class="hd"><button class="cart">Thêm Giỏ Hàng</button><button class="buy">Mua Ngay</button></div>
+            </a>
+            <a class="sp product-card" href="#" data-name="Áo Polo Tay Dài" data-price="190000" data-brand="Tommy Hilfiger" data-gender="Nam" data-date="2024-03-11">
+                <div class="pt"><img src="/images/aopolotaydai.png" alt="Áo Polo Tay Dài"></div>
+                <h3>Áo Polo Tay Dài</h3>
+                <div class="price"><p>190.000 VNĐ</p><del>235.000 VNĐ</del></div>
+                <div class="star"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <div class="hd"><button class="cart">Thêm Giỏ Hàng</button><button class="buy">Mua Ngay</button></div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const cards = Array.from(document.querySelectorAll('#products-grid .sp'));
+
+        function filterProducts() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const minPrice = parseFloat(document.getElementById('min-price').value) || 0;
+            const maxPrice = parseFloat(document.getElementById('max-price').value) || Infinity;
+            const gender = document.getElementById('gender').value;
+
+            cards.forEach(card => {
+                const name = card.dataset.name.toLowerCase();
+                const price = Number(card.dataset.price);
+                const cardGender = card.dataset.gender;
+
+                const isVisible = name.includes(searchTerm)
+                    && price >= minPrice && price <= maxPrice
+                    && (gender === '' || cardGender === gender);
+
+                card.style.display = isVisible ? 'block' : 'none';
+            });
+
+            sortProducts();
+        }
+
+        function sortProducts() {
+            const sortBy = document.getElementById('sort').value;
+            const grid = document.getElementById('products-grid');
+            const visibleCards = cards.filter(card => card.style.display !== 'none');
+
+            visibleCards.sort((a, b) => {
+                switch (sortBy) {
+                    case 'price-asc': return Number(a.dataset.price) - Number(b.dataset.price);
+                    case 'price-desc': return Number(b.dataset.price) - Number(a.dataset.price);
+                    case 'date-desc': return new Date(b.dataset.date) - new Date(a.dataset.date);
+                    default: return a.dataset.name.localeCompare(b.dataset.name, 'vi');
+                }
+            });
+
+            visibleCards.forEach(card => grid.appendChild(card));
+        }
+
+        document.getElementById('search').addEventListener('input', filterProducts);
+        document.getElementById('min-price').addEventListener('input', filterProducts);
+        document.getElementById('max-price').addEventListener('input', filterProducts);
+        document.getElementById('gender').addEventListener('change', filterProducts);
+        document.getElementById('sort').addEventListener('change', sortProducts);
+
+        filterProducts();
+    </script>
+
+ <footer>
+
+        <div class="one">
+            <h3>FASHIONSTORE</h3>
+            <p>Thương hiệu thời trang hàng đầu mang đến <br>phong cách hiện đại và chất lượng cao <br> cho mọi người.</p>
+            <div class="ct">
+                <i class="f fa-brands fa-facebook"></i>
+                <i class="i fa-brands fa-square-instagram"></i>
+                <i class="t fa-brands fa-twitter"></i>
+                <i class="y fa-brands fa-youtube"></i>
+            </div>
+        </div>
+
+        <div class="two">
+            <h3>Liên Kết Nhanh</h3>
+            <p>Về Chúng Tôi</p>
+            <p>Cửa Hàng</p>
+            <p>Bộ Sưu Tập Mới</p>
+            <p>Xu Hướng Thời Trang</p>
+        </div>
+
+        <div class="three">
+            <h3>Hỗ Trợ Khách Hàng</h3>
+            <p>Liên Hệ</p>
+            <p>Chính Sách Đổi Trả</p>
+            <p>Hướng Dẫn Mua Hàng</p>
+            <p>Câu Hỏi Thường Gặp</p>
+        </div>
+
+        <div class="four">
+            <h3>Thông Tin Liên Hệ</h3>
+            <p><i class="fa-solid fa-location-crosshairs"></i> 123 Đường Lê Lợi, Quận 1, TP. Hồ Chí Minh</p>
+            <p><i class="fa-solid fa-phone"></i> 0123456789</p>
+            <p><i class="fa-solid fa-envelope"></i> support123@gmail.com</p>
+        </div>
+    </footer>
+
+    <script src="/frontend/active/trangchu.js"></script>
+</body>
+</html>
