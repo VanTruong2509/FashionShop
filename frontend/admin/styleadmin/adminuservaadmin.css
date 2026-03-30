@@ -1,0 +1,154 @@
+.main h1 {
+    color: rgb(61, 96, 0);
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+.main{
+    flex:1;
+    padding: 10px 20px;
+}
+
+.search-filter { 
+    display: flex;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    justify-content: right;
+}
+
+.search-box { 
+    padding: 10px 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 15px; 
+    width: 300px; 
+    font-size: 18px;
+    color: #0d0051;
+    font-weight: bold;
+    background: rgb(250, 244, 244);
+}
+
+.tab {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+    width: 100%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.tab:hover {
+    transition: 0.3s ease-in-out;
+    transform: scale(1.03);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+th {
+   background:#2c3e50;
+   color: white;
+   padding: 10px 20px;
+   border: 2px solid rgb(40, 2, 78);
+   font-size: 18px;
+   text-align: center;
+}
+
+td {
+    padding: 10px 20px;
+    border: 2px solid rgb(172, 169, 169);
+    color: #3d0083;
+    font-size: 17px;
+    text-align: center;
+}
+    
+.delete { 
+    background: red; 
+    color: white; 
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.4s ease-in-out;
+    cursor: pointer;
+}
+
+.delete:hover {
+    transform: scale(1.1);
+    transition: 0.4s ease-in-out;
+    background-color: #070087;
+    color: #b9f8ff;
+}
+
+@media (max-width: 1024px) {
+    .search-box {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main {
+        padding: 10px;
+    }
+
+    .main h1 {
+        font-size: 22px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .search-filter {
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+
+    .search-box {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .tab {
+        padding: 5px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 10px;
+        transform: none !important;
+    }
+
+    .tab:hover {
+        transform: none !important;
+    }
+
+    table {
+        min-width: 650px;
+        margin-bottom: 10px;
+    }
+
+    th, td {
+        padding: 10px 8px;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .main h1 {
+        font-size: 18px;
+    }
+
+    .tab {
+        box-shadow: none;
+        border: 1px solid #eee;
+    }
+}

@@ -1,0 +1,232 @@
+.order-container {
+    width: 70%;
+    margin: auto;
+    margin-top: 60px;
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    border-bottom: 2px solid #eee;
+    margin-bottom: 20px;
+}
+
+.cxn, .cgh, .dg, .dh, .tc{
+    padding: 10px 20px;
+    background: #ffe5e5;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px 5px 0 0;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s ease-in-out;
+}
+
+.cxn:hover, .cgh:hover, .dg:hover, .dh:hover, .tc:hover {
+    background-color: black;
+    color: white;
+    transition: 0.3s ease-in-out;
+    transform: scale(1.1);
+}
+
+.cxn.active, .cgh.active, .dg.active, .dh.active, .tc.active {
+    background-color: black;
+    color: white;
+}
+
+.cc h2 {
+    padding: 10px 20px;
+    color: #00165D;
+}
+
+.cc p {
+    padding: 10px 20px;
+    color: #111112;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.price {
+    display: flex;
+    margin-top: 10px;
+    gap: 20px;
+    color: #B16B6B;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: auto;
+}
+
+
+.order-box {
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    background: #e1fdff;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+    height: 270px;
+}
+
+.order-box:hover {
+    transform: scale(1.02);
+    transition: 0.3s ease-in-out;
+}
+
+.huy {
+    background: rgb(103, 61, 61);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    border: none;
+    margin-right: auto;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.huy:hover {
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
+    background-color: #00ff44;
+    color: rgb(0, 0, 0);
+}
+
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.md {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+
+.order-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.order-item img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-top: -10px;
+}
+
+
+.order-footer {
+    display: flex;
+    justify-content: right;
+    font-weight: bold;
+    margin-top: 8px;
+    font-size: 22px;
+    color: #745700;
+}
+
+.xacnhan {
+    background: orange;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    color: white;
+    margin-top: 20px;
+}
+
+.chogiaohang {
+    background: blue;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    color: white;
+    margin-top: 20px;
+}
+
+.dagiao {
+    background: green;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    color: white;
+    margin-top: 20px;
+}
+
+.dahuy {
+    background: red;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    color: white;
+    margin-top: 20px;
+}
+
+@media (max-width: 1024px) {
+    .order-container {
+        width: 90%;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .tabs {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 10px;
+        gap: 5px;
+    }
+    .cxn, .cgh, .dg, .dh, .tc {
+        padding: 8px 12px;
+        font-size: 15px;
+        flex-shrink: 0;
+    }
+    .order-box {
+        height: auto;
+        min-height: 270px;
+    }
+    .order-header {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .price {
+        font-size: 16px;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .order-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .order-item img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 10px;
+    }
+    .cc h2 {
+        font-size: 18px;
+        padding: 5px 0;
+    }
+    .cc p {
+        padding: 5px 0;
+    }
+    .order-footer {
+        font-size: 18px;
+        justify-content: center;
+    }
+    .huy, .xacnhan, .chogiaohang, .dagiao, .dahuy {
+        width: 100%;
+        text-align: center;
+        font-size: 16px;
+    }
+}

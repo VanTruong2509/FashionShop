@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>TRANG ADMIN BÌNH LUẬN</title>
+    <link rel="stylesheet" href="/Frontend/admin/styleadmin/adminbinhluan.css">
+    <link rel="stylesheet" href="/Frontend/admin/styleadmin/sidebar.css">
+    <link rel="icon" href="/Frontend/images/bieutuong.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+    <div class="sidebar">
+        <div class="menu">
+            <h2>Admin</h2>
+            <ul>
+                <li><a href="/Frontend/admin/frameadmin/admin.html"><i class="fa fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="/Frontend/admin/frameadmin/adminproduct.html"><i class="fa fa-shirt"></i> Sản Phẩm</a></li>
+                <li><a href="/Frontend/admin/frameadmin/admindonhang.html"><i class="fa fa-cart-shopping"></i> Đơn Hàng</a></li>
+                <li><a href="/Frontend/admin/frameadmin/adminbinhluan.html"><i class="fa-solid fa-comment-dots"></i> Bình Luận</a></li>
+                <li><a href="/Frontend/admin/frameadmin/adminhotro.html"><i class="fa fa-envelope"></i> Hỗ Trợ</a></li>
+                <li><a href="/Frontend/admin/frameadmin/adminuser.html"><i class="fa-solid fa-users"></i> Khách Hàng</a></li>
+                <li><a href="/Frontend/admin/frameadmin/adminadmin.html"><i class="fa-solid fa-user-tie"></i> Admin</a></li>
+            </ul>
+        </div>
+
+        <div class="logout">
+            <button><i class="fa fa-right-from-bracket"></i> Đăng xuất</button>
+        </div>
+    </div>
+
+    <div class="main">
+        <h1>Quản Lý Đánh Giá & Bình Luận</h1>
+        <div class="tab">
+        <div class="header-action">
+            <div class="search-filter">
+                <input type="text" class="search-box" placeholder="Tìm tên sản phẩm,...">
+                <select id="starFilter" class="filter-box">
+                    <option value="all">Tất cả số sao</option>
+                    <option value="5">5 Sao (Tuyệt vời)</option>
+                    <option value="4">4 Sao (Tốt)</option>
+                    <option value="3">3 Sao (Bình thường)</option>
+                    <option value="2">2 Sao (Kém)</option>
+                    <option value="1">1 Sao (Tệ)</option>
+                </select>
+            </div>
+        </div>
+        
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Sản Phẩm</th>
+                    <th>Khách Hàng</th>
+                    <th>Đánh Giá</th>
+                    <th style="width: 250px;">Bình Luận</th>
+                    <th style="width: 282px;">Hoạt Động</th>
+                </tr>
+                <tr>
+                    <td>#001</td>
+                    <td>Quần Kaki Nam Ống Suông</td>
+                    <td>user_123</td>
+                    <td class="stars" data-star="5">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </td>
+                    <td>Quần đẹp, vải mát, giao hàng nhanh !</td>
+                    <td>
+                        <div class="bbb">
+                            <button class="reply-btn"><i class="fa fa-reply"></i> Phản Hồi</button>
+                            <button class="delete-btn"><i class="fa-solid fa-trash-can"></i> Xóa</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#002</td>
+                    <td>Áo Sơ Mi Nữ Cổ V</td>
+                    <td>anna_nguyen</td>
+                    <td class="stars" data-star="2">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </td>
+                    <td>Form áo hơi nhỏ so với size thật, giao chậm.</td>
+                    <td>
+                        <div class="bbb">
+                            <button class="reply-btn" ><i class="fa fa-reply"></i> Phản Hồi</button>
+                            <button class="delete-btn"><i class="fa-solid fa-trash-can"></i> Xóa</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="replyModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn"><i class="fa-solid fa-xmark"></i></span>
+        
+        <div class="modal-header">
+            <h2>Phản hồi khách hàng <span class="modal-customer-name"></span></h2>
+        </div>
+
+        <div class="review-quote">
+            <span class="modal-review-text"></span>
+        </div>
+
+        <textarea class="reply-textarea" placeholder="Nhập nội dung phản hồi của shop tại đây..."></textarea>
+        
+            <button class="approve-btn"><i class="fa fa-paper-plane"></i> Gửi phản hồi</button>
+    </div>
+</div>
+
+<script src="/Frontend/admin/activeadmin/adminbinhluan.js"></script>
+</body>
+</html>

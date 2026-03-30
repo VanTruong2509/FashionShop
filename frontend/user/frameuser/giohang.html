@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Frontend/user/styleuser/giohang.css">
+    <link rel="stylesheet" href="/Frontend/user/styleuser/header.css">
+    <link rel="stylesheet" href="/Frontend/user/styleuser/footer.css">
+    <link rel="icon" href="/Frontend/images/bieutuong.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>TRANG GIỎ HÀNG</title>
+</head>
+
+<body>
+
+<header>
+        <div class="logo">
+            <h3>FASHIONSTORE</h3>
+        </div>
+
+        <div class="nav">
+            <ul>
+                <li><a href="/Frontend/user/frameuser/trangchu.html">Trang Chủ</a></li>
+                <li><a href="#">Sản Phẩm</a>
+                <ul class="dropdown">
+                    <li><a href="/Frontend/user/frameuser/aosominamvanu.html">Áo Sơ Mi Nam/Nữ</a></li>
+                    <li><a href="/Frontend/user/frameuser/aopolonam.html">Áo Polo Nam</a></li>
+                    <li><a href="/Frontend/user/frameuser/aokhoacnamvanu.html">Áo Khoác Nam/Nữ</a></li>
+                    <li><a href="/Frontend/user/frameuser/quantaynamvanu.html">Quần Tây Nam/Nữ</a></li>
+                    <li><a href="/Frontend/user/frameuser/quanjeannamvanu.html">Quần Jean Nam/Nữ</a></li>
+                    <li><a href="/Frontend/user/frameuser/quanshortsnamvanu.html">Quần Kaki Nam/Nữ</a></li>
+                    <li><a href="/Frontend/user/frameuser/quanshortsnamvanu.html">Quần Short Nam/Nữ</a></li>
+                </ul>
+                </li>
+                
+                <li><a href="/Frontend/user/frameuser/lienhe.html">Liên Hệ</a></li>
+                <li><a href="/Frontend/user/frameuser/donhang.html">Đơn Hàng</a></li>
+                <li><a href="/Frontend/user/frameuser/giohang.html"><i class="r fa-solid fa-basket-shopping"></i></a></li>
+                <li><a href="/Frontend/user/frameuser/canhan.html"><i class="o fa-solid fa-user"></i></a></li>
+            </ul>
+
+            <div class="icon">
+                <input type="text" class="search" placeholder="Tìm Kiếm Nhanh..."> <a href="#"><i class="s fa-solid fa-magnifying-glass"></i></a>
+            </div>
+        </div>
+</header>
+
+<section>
+
+    <div class="cart-container">
+        <h1>🛒 Giỏ Hàng Của Bạn</h1>
+    <div class="cart-item">
+        <img src="/Frontend/images/QuanKakiNamUniqlo.png" alt="ảnh">
+
+            <div class="item-info">
+                <h2>Quần Kaki Nam Uniqlo</h2>
+                <div class="price">
+                    <p>200.000 VNĐ</p> 
+                    <del>250.000 VNĐ</del>
+                </div>
+            </div>
+
+            <div class="quantity">
+                <button class="btn-qty"><i class="fa-solid fa-minus"></i></button>
+                <span>1</span>
+                <button class="btn-qty"><i class="fa-solid fa-plus"></i></button>
+                <button class="btn-delete"><i class="fa-solid fa-trash-can"></i> Xóa</button>
+            </div>
+    </div>
+
+    <div class="cart-item">
+        <img src="/Frontend/images/quanjeannamslimfit.png" alt="ảnh">
+
+            <div class="item-info">
+                <h2>Quần Jean Nam Slim Fit</h2>
+                <div class="price">
+                    <p>250.000 VNĐ</p> 
+                    <del>300.000 VNĐ</del>
+                </div>
+            </div>
+
+            <div class="quantity">
+                <button class="btn-qty"><i class="fa-solid fa-minus"></i></button>
+                <span>1</span>
+                <button class="btn-qty"><i class="fa-solid fa-plus"></i></button>
+                <button class="btn-delete"><i class="fa-solid fa-trash-can"></i> Xóa</button>
+            </div>
+    </div>
+    </div>
+    <div class="summary">
+        <h2>Tổng Tiền: <span id="total">0</span> VNĐ</h2>
+        <div class="btn">
+            <button><i class="fa-solid fa-trash"></i> Xóa Giỏ Hàng</button>
+            <a href="/Frontend/user/frameuser/thanhtoan.html"><button><i class="fa-solid fa-circle-dollar-to-slot"></i> Thanh Toán</button></a>
+        </div>
+    </div>
+
+    
+</section>
+
+
+<footer>
+        <div class="one">
+            <h3>FASHIONSTORE</h3>
+            <p>Thương hiệu thời trang hàng đầu mang đến <br>phong cách hiện đại và chất lượng cao <br> cho mọi người.</p>
+            <div class="ct">
+                <i class="f fa-brands fa-facebook"></i>
+                <i class="i fa-brands fa-square-instagram"></i>
+                <i class="t fa-brands fa-twitter"></i>
+                <i class="y fa-brands fa-youtube"></i>
+            </div>
+        </div>
+
+        <div class="two">
+            <h3>Liên Kết Nhanh</h3>
+            <p>Về Chúng Tôi</p>
+            <p>Cửa Hàng</p>
+            <p>Bộ Sưu Tập Mới</p>
+            <p>Xu Hướng Thời Trang</p>
+        </div>
+
+        <div class="three">
+            <h3>Hỗ Trợ Khách Hàng</h3>
+            <p>Liên Hệ</p>
+            <p>Chính Sách Đổi Trả</p>
+            <p>Hướng Dẫn Mua Hàng</p>
+            <p>Câu Hỏi Thường Gặp</p>
+        </div>
+
+        <div class="four">
+            <h3>Thông Tin Liên Hệ</h3>
+            <p><i class="fa-solid fa-location-crosshairs"></i> 123 Đường Lê Lợi, Quận 1, TP. Hồ Chí Minh</p>
+            <p><i class="fa-solid fa-phone"></i> 0352493970</p>
+            <p><i class="fa-solid fa-envelope"></i> supportfashionstore123@gmail.com</p>
+        </div>
+</footer>
+    <script src="/Frontend/user/activeuser/giohang.js"></script>
+</body>
+</html>

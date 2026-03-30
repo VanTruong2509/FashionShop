@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRANG ADMIN HỖ TRỢ</title>
+    <link rel="stylesheet" href="/Frontend/admin/styleadmin/adminhotro.css">
+    <link rel="stylesheet" href="/Frontend/admin/styleadmin/sidebar.css">
+    <link rel="icon" href="/Frontend/images/bieutuong.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+	<div class="container">
+    <div class="sidebar">
+        <div class="menu">
+            <h2>Admin</h2>
+            <ul>
+                <li><a href="/Frontend/admin/frameadmin/admin.html"><i class="fa fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="/Frontend/admin/frameadmin/adminproduct.html"><i class="fa fa-shirt"></i> Sản Phẩm</a></li>
+                <li><a href="/Frontend/admin/frameadmin/admindonhang.html"><i class="fa fa-cart-shopping"></i> Đơn Hàng</a></li>
+                <li><a href="/Frontend/admin/frameadmin/adminbinhluan.html"><i class="fa-solid fa-comment-dots"></i> Bình Luận</a></li>
+                <li><a href="/Frontend/admin/frameadmin/adminhotro.html"><i class="fa fa-envelope"></i> Hỗ Trợ</a></li>
+                <li><a href="/Frontend/admin/frameadmin/adminuser.html"><i class="fa-solid fa-users"></i> Khách Hàng</a></li>
+                <li><a href="/Frontend/admin/frameadmin/adminadmin.html"><i class="fa-solid fa-user-tie"></i> Admin</a></li>
+            </ul>
+        </div>
+
+        <div class="logout">
+            <button><i class="fa fa-right-from-bracket"></i> Đăng xuất</button>
+        </div>
+    </div>
+
+    <div class="main">
+        <h1>Quản Lý Lời Nhắn</h1>
+		<div class="tab">
+            <div class="search-filter">
+                <input type="text" class="search-box" placeholder="Tìm tên khách hàng, sđt...">
+            </div>
+            <table>
+                <tr>
+                    <th>ID</th>
+					<th>Tên</th>
+                    <th>Số Điện Thoại</th>
+                    <th style="width: 400px;">Lời Nhắn</th>
+                    <th style="width: 282px;">Hoạt Động</th>
+                </tr>
+
+				<tr>
+					<td>#001</td>
+					<td>Nguyễn Văn Hai</td>
+                    <td>0246810123</td>
+					<td>Mình cần hỗ trợ về đơn hàng đã đặt, nhờ shop kiểm tra giúp mình với ạ.</td>
+					<td>
+                		<div class="bbb">
+                            <button class="reply" ><i class="fa fa-reply"></i> Phản Hồi</button>
+                            <button class="delete"><i class="fa-solid fa-trash-can"></i> Xóa</button>
+                        </div>
+					</td>
+				</tr>
+
+				<tr>
+					<td>#002</td>
+					<td>Phạm Hồng Ba</td>
+                    <td>0135791113</td>
+					<td>Xin chào shop, mình cần được hỗ trợ về sản phẩm. Mong shop phản hồi sớm giúp mình. Cảm ơn!</td>
+					<td>
+                        <div class="bbb">
+                            <button class="reply" ><i class="fa fa-reply"></i> Phản Hồi</button>
+                            <button class="delete"><i class="fa-solid fa-trash-can"></i> Xóa</button>
+                        </div>
+					</td>
+				</tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="replyModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn"><i class="fa-solid fa-xmark"></i></span>
+        
+        <div class="modal-header">
+            <h2>Phản hồi khách hàng <span class="modal-customer-name"></span></h2>
+        </div>
+
+        <div class="review-quote">
+            <span class="modal-review-text"></span>
+        </div>
+
+        <textarea class="reply-textarea" placeholder="Nhập nội dung phản hồi của shop tại đây..."></textarea>
+        
+            <button class="approve-btn"><i class="fa fa-paper-plane"></i> Gửi phản hồi</button>
+    </div>
+</div>
+
+<script src="/Frontend/admin/activeadmin/adminhotro.js"></script>
+</body>
+</html>

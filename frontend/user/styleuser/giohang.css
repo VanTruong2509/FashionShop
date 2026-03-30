@@ -1,0 +1,193 @@
+     
+        section {
+            margin: auto;
+            margin-bottom: 300px;
+            background-color:  #e3e9ffa4;
+            width: 80%;
+            border-radius: 20px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+        }
+
+
+        h1 {
+            color: #000e47;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        .cart-container {
+            margin-top: 30px;
+            padding: 10px 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgb(245, 255, 250);
+            padding: 10px 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s ease-in-out;
+        }
+
+        .cart-item:hover {
+            transform: scale(1.02);
+            transition: 0.3s ease-in-out;
+        }
+
+        .cart-item img {
+            width: 180px;
+        }
+
+        .item-info {
+            flex: 2;
+            margin-left: 15px;
+        }
+
+        .item-info h2 {
+            padding: 10px 20px;
+            color: #00165D;
+        }
+
+        .price {
+            display: flex;
+            gap: 20px;
+            margin-top: 18px;
+            color: #B16B6B;
+            font-size: 18px;
+            font-weight: bold;
+            margin-left: 30px;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 22px;
+            margin-right: 70px;
+        }
+
+        button {
+            border: none;
+            padding: 8px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn-qty {
+            background: #5F8FAF;
+            color: white;
+            font-size: 18px;
+        }
+
+        .btn-qty:hover {
+            background: #001657;
+            transform: scale(1.1);
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn-delete {
+            background: #C05F5F;
+            color: white;
+            transition: 0.3s ease-in-out;
+            font-size: 18px;
+            margin-left: 20px;
+           
+        }
+
+        .btn-delete:hover {
+            background: red;
+            transform: scale(1.1);
+            transition: 0.3s ease-in-out;
+        }
+
+        .summary {
+            margin-top: 10px;
+            text-align: center;
+            padding: 10px 20px;
+        }
+
+        .summary h2 {
+            color: #001657;
+            text-align: center;
+        }
+
+        .summary button {
+            background: #d8eb07;
+            transition: 0.3s ease-in-out;
+            padding: 10px 20px;
+            font-size: 22px;
+            color: #840000;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .summary button:hover {
+            transform: scale(1.1);
+            background: #c5d800;
+            transition: 0.3s ease-in-out;
+        }
+
+        @media (max-width: 1024px) {
+    section {
+        width: 95%;
+    }
+    .cart-item img {
+        width: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cart-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .item-info {
+        margin-left: 0;
+    }
+
+    .price {
+        justify-content: center;
+    }
+
+    .quantity {
+        justify-content: center;
+    }
+
+    .btn-delete {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    .cart-item img {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .item-info h2 {
+        font-size: 18px;
+    }
+
+    .summary button {
+        width: 100%;
+        font-size: 18px;
+    }
+}

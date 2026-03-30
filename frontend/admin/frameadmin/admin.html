@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>TRANG ADMIN DASHBOARD</title>
+    <link rel="stylesheet" href="/Frontend/admin/styleadmin/admin.css">
+    <link rel="stylesheet" href="/Frontend/admin/styleadmin/sidebar.css">
+    <link rel="icon" href="/Frontend/images/bieutuong.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="sidebar">
+        <div class="menu">
+            <h2>Admin</h2>
+            <ul>
+                <li><a href="/Frontend/admin/frameadmin/admin.html"><i class="fa fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="/Frontend/admin/frameadmin/adminproduct.html"><i class="fa fa-shirt"></i> Sản Phẩm</a></li>
+                <li><a href="/Frontend/admin/frameadmin/admindonhang.html"><i class="fa fa-cart-shopping"></i> Đơn Hàng</a></li>
+                <li><a href="/Frontend/admin/frameadmin/adminbinhluan.html"><i class="fa-solid fa-comment-dots"></i> Bình Luận</a></li>
+                <li><a href="/Frontend/admin/frameadmin/adminhotro.html"><i class="fa fa-envelope"></i> Hỗ Trợ</a></li>
+                <li><a href="/Frontend/admin/frameadmin/adminuser.html"><i class="fa-solid fa-users"></i> Khách Hàng</a></li>
+                <li><a href="/Frontend/admin/frameadmin/adminadmin.html"><i class="fa-solid fa-user-tie"></i> Admin</a></li>
+            </ul>
+        </div>
+
+        <div class="logout">
+            <button><i class="fa fa-right-from-bracket"></i> Đăng xuất</button>
+        </div>
+    </div>
+
+    <div class="main">
+
+        <h1>Tổng Quan</h1>
+        <div class="cards">
+            <div class="card">
+                <i class="fa fa-shirt"></i>
+                <h3>Sản Phẩm</h3>
+                <p>120</p>
+            </div>
+
+            <div class="card">
+                <i class="fa fa-cart-shopping"></i>
+                <h3>Đơn Hàng</h3>
+                <p>1.800</p>   
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-comment-dots"></i>
+                <h3>Bình Luận</h3>
+                <p>34</p> 
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-star"></i>
+                <h3>Đánh Giá</h3>
+                <p>35</p>
+            </div>
+
+            <div class="card">
+                <i class="fa fa-envelope"></i>
+                <h3>Hỗ Trợ</h3>
+                <p>12</p>
+            </div>
+
+            <div class="card">
+               <i class="fa-solid fa-money-bill-wave"></i>
+                <h3>Doanh Thu</h3>
+                <p>135.000.000 VNĐ</p>
+            </div>
+
+            <div class="card">
+                <i class="fa fa-envelope"></i>
+                <h3>Khách Hàng</h3>
+                <p>85</p>
+            </div>
+
+            <div class="card">
+                <i class="fa fa-envelope"></i>
+                <h3>Admin</h3>
+                <p>8</p>
+            </div>
+        </div>
+
+        <div class="table-box">
+            <div class="dt">
+                <h2>Doanh Thu</h2>
+                <canvas id="dtt"></canvas>
+            </div>
+
+            <div class="dh">
+                <h2>Đơn Hàng</h2>
+                <canvas id="dhh"></canvas>
+            </div>
+        </div>
+
+        <div class="tab">
+            <h2>Top Sản Phẩm Bán Chạy</h2>
+
+            <table>
+                <tr>
+                    <th>Ảnh</th>
+                    <th>Sản Phẩm</th>
+                    <th>Đã Bán</th>
+                    <th>Doanh Thu</th>
+                </tr>
+
+                <tr>
+                    <td><img src="/Frontend/images/quanshorttaynam.png" alt="Ảnh"></td>
+                    <td>Quần Short Nam Tây</td>
+                    <td>120</td>
+                    <td>24.000.000 VNĐ</td>
+                </tr>
+
+                <tr>
+                    <td><img src="/Frontend/images/aopolonamthun.png" alt="Ảnh"></td>
+                    <td>Áo Polo Nam Thun</td>
+                    <td>144</td>
+                    <td>33.250.000 VNĐ</td>
+                </tr>
+
+                <tr>
+                    <td><img src="/Frontend/images/aokhoacbombernam.png" alt="Ảnh"></td>
+                    <td>Áo Khoác Nam Bomber</td>
+                    <td>135</td>
+                    <td>27.000.000 VNĐ</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/Frontend/admin/activeadmin/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRANG ADMIN ADMIN</title>
+    <link rel="stylesheet" href="/Frontend/admin/styleadmin/adminuservaadmin.css">
+    <link rel="stylesheet" href="/Frontend/admin/styleadmin/sidebar.css">
+    <link rel="icon" href="/Frontend/images/bieutuong.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+	<div class="container">
+    <div class="sidebar">
+        <div class="menu">
+            <h2>Admin</h2>
+            <ul>
+                <li><a href="/Frontend/admin/frameadmin/admin.html"><i class="fa fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="/Frontend/admin/frameadmin/adminproduct.html"><i class="fa fa-shirt"></i> Sản Phẩm</a></li>
+                <li><a href="/Frontend/admin/frameadmin/admindonhang.html"><i class="fa fa-cart-shopping"></i> Đơn Hàng</a></li>
+                <li><a href="/Frontend/admin/frameadmin/adminbinhluan.html"><i class="fa-solid fa-comment-dots"></i> Bình Luận</a></li>
+                <li><a href="/Frontend/admin/frameadmin/adminhotro.html"><i class="fa fa-envelope"></i> Hỗ Trợ</a></li>
+                <li><a href="/Frontend/admin/frameadmin/adminuser.html"><i class="fa-solid fa-users"></i> Khách Hàng</a></li>
+                <li><a href="/Frontend/admin/frameadmin/adminadmin.html"><i class="fa-solid fa-user-tie"></i> Admin</a></li>
+            </ul>
+        </div>
+
+        <div class="logout">
+            <button><i class="fa fa-right-from-bracket"></i> Đăng xuất</button>
+        </div>
+    </div>
+
+    <div class="main">
+        <h1>Quản Lý ADMIN</h1>
+		<div class="tab">
+            <div class="search-filter">
+                <input type="text" class="search-box" placeholder="Tìm tên admin, sđt...">
+            </div>
+            <table>
+                <tr>
+                    <th>ID</th>
+					<th>Tên</th>
+                    <th>Email</th>
+                    <th>Số Điện Thoại</th>
+                    <th>Ngày Đăng Kí</th>
+                    <th>Hoạt Động</th>
+                </tr>
+
+				<tr>
+					<td>#001</td>
+					<td>Nguyễn Quang Trung</td>
+					<td>nqt74@gmail.com</td>
+                    <td>0352493970</td>
+					<td>4/3/2026</td>
+					<td>
+                		<button class="delete"><i class="fa-solid fa-trash-can"></i> Xóa</button>
+					</td>
+				</tr>
+
+				<tr>
+					<td>#002</td>
+					<td>Nguyễn Quốc Trưởng</td>
+					<td>nqtt456@gmail.com</td>
+                    <td>0321654978</td>
+					<td>4/3/2026</td>
+					<td>
+                		<button class="delete"><i class="fa-solid fa-trash-can"></i> Xóa</button>
+					</td>
+				</tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="/Frontend/admin/activeadmin/adminadmin.js"></script>
+</body>
+</html>
